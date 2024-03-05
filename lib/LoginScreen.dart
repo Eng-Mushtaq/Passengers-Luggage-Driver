@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:luggage_delivery/Customer/SignupScreen.dart';
+import 'package:luggage_delivery/user_type_screen.dart';
 
 import 'Driver/SignupScreen.dart';
 import 'custom_widgets/custom_textformfield.dart';
@@ -17,7 +18,7 @@ class LoginPage extends StatelessWidget {
     TextEditingController emailPassword = TextEditingController();
 
     return Scaffold(
-      backgroundColor: Color(0xFFf1f1f1),
+      backgroundColor: const Color(0xFFf1f1f1),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(
@@ -74,7 +75,7 @@ class LoginPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      SizedBox(),
+                      const SizedBox(),
                       TextButton(
                         child: const Text('Forgot Password?'),
                         onPressed: () {
@@ -88,15 +89,15 @@ class LoginPage extends StatelessWidget {
                   SizedBox(
                     height: 55,
                     child: ElevatedButton(
-                      child: const Text(
+                      child: Text(
                         'LOGIN',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
+                        style: TextStyle(fontSize: 18, color: primarygreen),
                       ),
                       onPressed: () {
                         // Implement login logic
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: blue,
+                        backgroundColor: lightgreenshede1,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
                               8.0), // Adjust the radius as needed
@@ -117,7 +118,7 @@ class LoginPage extends StatelessWidget {
                         const Text("Don't have an account? "),
                         GestureDetector(
                           onTap: () {
-                            Get.to(DriverSignupScreen());
+                            Get.to(UserTypeScreen());
                             // Implement sign up navigation
                           },
                           child: const Text(

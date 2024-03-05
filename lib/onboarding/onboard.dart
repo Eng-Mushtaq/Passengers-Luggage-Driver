@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:luggage_delivery/LoginScreen.dart';
+import 'package:luggage_delivery/user_type_screen.dart';
 
 import 'constant.dart';
 import 'model/allinonboardscreen.dart';
@@ -131,7 +132,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
   AnimatedContainer buildDot({int? index}) {
     return AnimatedContainer(
       duration: kAnimationDuration,
-      margin: EdgeInsets.only(right: 5),
+      margin: const EdgeInsets.only(right: 5),
       height: 6,
       width: currentIndex == index ? 20 : 6,
       decoration: BoxDecoration(
@@ -159,7 +160,7 @@ class PageBuilderWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 100,
           ),
           Container(

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:luggage_delivery/onboarding/constant.dart';
 
 import '../custom_widgets/custom_textformfield.dart';
+import 'home_screen.dart';
 
 class DriverSignupScreen extends StatefulWidget {
   @override
@@ -9,7 +11,10 @@ class DriverSignupScreen extends StatefulWidget {
 }
 
 class _DriverSignupScreenState extends State<DriverSignupScreen> {
-  final TextEditingController companyController = TextEditingController();
+  final TextEditingController cardPassNumberController =
+      TextEditingController();
+  final TextEditingController drivingLicenseController =
+      TextEditingController();
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -23,6 +28,14 @@ class _DriverSignupScreenState extends State<DriverSignupScreen> {
   final TextEditingController stateController = TextEditingController();
   final TextEditingController postcodeController = TextEditingController();
   final TextEditingController countryController = TextEditingController();
+  final TextEditingController vicleModelController = TextEditingController();
+  final TextEditingController vicleNumberController = TextEditingController();
+  final TextEditingController vicleColorController = TextEditingController();
+
+  var _vehicleType = 'Car';
+  var _fleetManager;
+
+  List<String> _vehicleTypes = ['Car', 'Truck', 'Bike'];
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +77,14 @@ class _DriverSignupScreenState extends State<DriverSignupScreen> {
               ),
               const SizedBox(height: 10),
               CustomTextFormField(
-                labelText: 'Company Name',
-                controller: companyController,
+                labelText: 'Personal ID , Passport number',
+                controller: cardPassNumberController,
+                textInputType: TextInputType.text,
+              ),
+              const SizedBox(height: 10),
+              CustomTextFormField(
+                labelText: 'Driving license',
+                controller: drivingLicenseController,
                 textInputType: TextInputType.text,
               ),
               const SizedBox(height: 15),
@@ -133,16 +152,24 @@ class _DriverSignupScreenState extends State<DriverSignupScreen> {
                 textInputType: TextInputType.text,
               ),
               const SizedBox(height: 15),
-              CustomTextFormField(
-                labelText: 'State',
-                controller: stateController,
-                textInputType: TextInputType.text,
-              ),
-              const SizedBox(height: 15),
-              CustomTextFormField(
-                labelText: 'Postcode',
-                controller: postcodeController,
-                textInputType: TextInputType.number,
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextFormField(
+                      labelText: 'State',
+                      controller: stateController,
+                      textInputType: TextInputType.text,
+                    ),
+                  ),
+                  const SizedBox(width: 15),
+                  Expanded(
+                    child: CustomTextFormField(
+                      labelText: 'Postcode',
+                      controller: postcodeController,
+                      textInputType: TextInputType.number,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 15),
               CustomTextFormField(
@@ -151,17 +178,69 @@ class _DriverSignupScreenState extends State<DriverSignupScreen> {
                 textInputType: TextInputType.text,
               ),
               const SizedBox(height: 20),
+              const Text('Enter Your Vehicle details'),
+              const SizedBox(height: 15),
+              SizedBox(
+                // height: 55,
+                child: DropdownButtonFormField(
+                  value: _vehicleType,
+                  items: _vehicleTypes.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (newValue) {
+                    setState(() {
+                      _vehicleType = newValue!;
+                    });
+                  },
+                  padding: EdgeInsets.zero,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    labelText: 'Vehicle type',
+                    // border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                        borderSide:
+                            BorderSide.none // Set the border radius here
+                        ),
+                  ),
+                  // decoration: InputDecoration(labelText: 'Vehicle type'),
+                ),
+              ),
+              const SizedBox(height: 15),
+              CustomTextFormField(
+                labelText: 'Vehicle model',
+                controller: vicleModelController,
+                textInputType: TextInputType.text,
+              ),
+              const SizedBox(height: 15),
+              CustomTextFormField(
+                labelText: 'Vehicle number',
+                controller: vicleNumberController,
+                textInputType: TextInputType.text,
+              ),
+              const SizedBox(height: 15),
+              CustomTextFormField(
+                labelText: 'Vehicle color',
+                controller: vicleColorController,
+                textInputType: TextInputType.text,
+              ),
+              const SizedBox(height: 20),
               SizedBox(
                 height: 55,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Implement login logic
+                    Get.to(const DriverHomeScreen());
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: blue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
-                          8.0), // Adjust the radius as needed
+                        8.0,
+                      ), // Adjust the radius as needed
                     ),
                     //   padding: EdgeInsets.symmetric(
                     //       vertical: screenSize.height * 0.02),

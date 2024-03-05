@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:luggage_delivery/Customer/home_screen.dart';
 import 'package:luggage_delivery/onboarding/constant.dart';
 
 import '../custom_widgets/custom_textformfield.dart';
@@ -133,16 +135,24 @@ class _CustomerSignupScreenState extends State<CustomerSignupScreen> {
                 textInputType: TextInputType.text,
               ),
               const SizedBox(height: 15),
-              CustomTextFormField(
-                labelText: 'State',
-                controller: stateController,
-                textInputType: TextInputType.text,
-              ),
-              const SizedBox(height: 15),
-              CustomTextFormField(
-                labelText: 'Postcode',
-                controller: postcodeController,
-                textInputType: TextInputType.number,
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextFormField(
+                      labelText: 'State',
+                      controller: stateController,
+                      textInputType: TextInputType.text,
+                    ),
+                  ),
+                  const SizedBox(width: 15),
+                  Expanded(
+                    child: CustomTextFormField(
+                      labelText: 'Postcode',
+                      controller: postcodeController,
+                      textInputType: TextInputType.number,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 15),
               CustomTextFormField(
@@ -152,28 +162,30 @@ class _CustomerSignupScreenState extends State<CustomerSignupScreen> {
               ),
               const SizedBox(height: 20),
               SizedBox(
-                  height: 55,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Implement login logic
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            8.0), // Adjust the radius as needed
-                      ),
-                      //   padding: EdgeInsets.symmetric(
-                      //       vertical: screenSize.height * 0.02),
-                      //
-                      //   // Dynamic padding based on screen height
-                      // ),
+                height: 55,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => const CustomerHomeScreen());
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        8.0,
+                      ), // Adjust the radius as needed
                     ),
-                    child: const Text(
-                      'REGISTER',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                  ))
+                    //   padding: EdgeInsets.symmetric(
+                    //       vertical: screenSize.height * 0.02),
+                    //
+                    //   // Dynamic padding based on screen height
+                    // ),
+                  ),
+                  child: const Text(
+                    'REGISTER',
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                ),
+              )
             ],
           ),
         ),
