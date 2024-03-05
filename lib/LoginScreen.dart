@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:luggage_delivery/SignupScreen.dart';
+import 'package:luggage_delivery/Customer/SignupScreen.dart';
 
+import 'Driver/SignupScreen.dart';
 import 'custom_widgets/custom_textformfield.dart';
 import 'onboarding/constant.dart';
 
@@ -116,7 +117,7 @@ class LoginPage extends StatelessWidget {
                         const Text("Don't have an account? "),
                         GestureDetector(
                           onTap: () {
-                            Get.to(SignupScreen());
+                            Get.to(DriverSignupScreen());
                             // Implement sign up navigation
                           },
                           child: const Text(

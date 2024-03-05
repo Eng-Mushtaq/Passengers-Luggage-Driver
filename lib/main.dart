@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:luggage_delivery/onboarding/onboard.dart';
 
 import 'LoginScreen.dart';
-import 'SignupScreen.dart';
+import 'Customer/SignupScreen.dart';
 
 void main() {
   runApp(const MyApp());

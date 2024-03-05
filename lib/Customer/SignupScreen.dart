@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:luggage_delivery/onboarding/constant.dart';
 
-import 'custom_widgets/custom_textformfield.dart';
+import '../custom_widgets/custom_textformfield.dart';
 
-class SignupScreen extends StatefulWidget {
+class CustomerSignupScreen extends StatefulWidget {
   @override
-  _SignupScreenState createState() => _SignupScreenState();
+  _CustomerSignupScreenState createState() => _CustomerSignupScreenState();
 }
 
-class _SignupScreenState extends State<SignupScreen> {
+class _CustomerSignupScreenState extends State<CustomerSignupScreen> {
   final TextEditingController companyController = TextEditingController();
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
